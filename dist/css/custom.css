@@ -1,31 +1,43 @@
 :root {
     /* Color Palette from Image */
-    --primary-color: #2563eb;       /* Bright Blue for primary actions/buttons */
+    --primary-color: #2563eb;
+    /* Bright Blue for primary actions/buttons */
     --primary-hover: #1d4ed8;
-    --secondary-color: #64748b;     /* Slate for secondary text/icons */
-    
-    --sidebar-bg: #111827;          /* Dark Navy for Sidebar */
+    --secondary-color: #64748b;
+    /* Slate for secondary text/icons */
+
+    --sidebar-bg: #111827;
+    /* Dark Navy for Sidebar */
     --sidebar-hover: #1f2937;
-    --sidebar-active: #2563eb;      /* Blue for active menu */
-    
-    --body-bg: #f3f4f6;             /* Light Gray Background */
-    --card-bg: #ffffff;             /* White for cards */
-    
-    --text-primary: #111827;        /* Dark for headings */
-    --text-secondary: #6b7280;      /* Gray for body text */
-    
+    --sidebar-active: #2563eb;
+    /* Blue for active menu */
+
+    --body-bg: #f3f4f6;
+    /* Light Gray Background */
+    --card-bg: #ffffff;
+    /* White for cards */
+
+    --text-primary: #111827;
+    /* Dark for headings */
+    --text-secondary: #6b7280;
+    /* Gray for body text */
+
     --border-color: #e5e7eb;
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    
+
     /* Font */
     --font-family: 'Inter', sans-serif;
-    
+
     /* Status Colors */
-    --status-interested: #2563eb;   /* Blue */
-    --status-followup: #f59e0b;     /* Amber */
-    --status-lost: #ef4444;         /* Red */
-    --status-new: #10b981;          /* Emerald */
+    --status-interested: #2563eb;
+    /* Blue */
+    --status-followup: #f59e0b;
+    /* Amber */
+    --status-lost: #ef4444;
+    /* Red */
+    --status-new: #10b981;
+    /* Emerald */
     --status-bg-opacity: 0.1;
 }
 
@@ -35,7 +47,12 @@ body {
     color: var(--text-secondary);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     color: var(--text-primary);
     font-weight: 600;
 }
@@ -46,7 +63,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .brand-link {
-    border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
     background-color: var(--sidebar-bg) !important;
 }
 
@@ -56,7 +73,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-sidebar .nav-item .nav-link {
-    color: #9ca3af !important; /* Light gray text */
+    color: #9ca3af !important;
+    /* Light gray text */
     border-radius: 6px;
     padding: 10px 16px;
     margin-bottom: 4px;
@@ -125,7 +143,8 @@ h1, h2, h3, h4, h5, h6 {
     background: #fff !important;
     padding: 20px !important;
     display: flex;
-    flex-direction: column; /* Stack content */
+    flex-direction: column;
+    /* Stack content */
     align-items: flex-start;
     height: 100%;
 }
@@ -143,11 +162,30 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Custom Colors for Info Box Icons based on your previous usage, but softened */
-.bg-gradient-primary { background: #dbeafe !important; color: #2563eb !important; }
-.bg-gradient-success { background: #d1fae5 !important; color: #10b981 !important; }
-.bg-gradient-warning { background: #fef3c7 !important; color: #d97706 !important; }
-.bg-gradient-danger { background: #fee2e2 !important; color: #ef4444 !important; }
-.bg-gradient-info { background: #cffafe !important; color: #06b6d4 !important; }
+.bg-gradient-primary {
+    background: #dbeafe !important;
+    color: #2563eb !important;
+}
+
+.bg-gradient-success {
+    background: #d1fae5 !important;
+    color: #10b981 !important;
+}
+
+.bg-gradient-warning {
+    background: #fef3c7 !important;
+    color: #d97706 !important;
+}
+
+.bg-gradient-danger {
+    background: #fee2e2 !important;
+    color: #ef4444 !important;
+}
+
+.bg-gradient-info {
+    background: #cffafe !important;
+    color: #06b6d4 !important;
+}
 
 .info-box-content {
     padding: 0 !important;
@@ -184,7 +222,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* --- Tables --- */
 .table thead th {
-    background-color: #f9fafb; /* Very light gray header */
+    background-color: #f9fafb;
+    /* Very light gray header */
     color: var(--text-secondary);
     font-weight: 600;
     text-transform: uppercase;
@@ -228,10 +267,25 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.75rem;
 }
 
-.badge-interested { background: #dbeafe; color: #1e40af; }
-.badge-followup { background: #fef3c7; color: #92400e; }
-.badge-lost { background: #fee2e2; color: #991b1b; }
-.badge-new { background: #d1fae5; color: #065f46; }
+.badge-interested {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.badge-followup {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.badge-lost {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.badge-new {
+    background: #d1fae5;
+    color: #065f46;
+}
 
 /* Navbar Overrides */
 .main-header {
@@ -249,4 +303,108 @@ h1, h2, h3, h4, h5, h6 {
     .content-header h1 {
         font-size: 1.25rem;
     }
+}
+
+/* --- Utilities & Helper Classes --- */
+.glass-box {
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+    backdrop-filter: blur(6px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    margin-bottom: 1rem;
+}
+
+/* --- Login Page Styles --- */
+.login-body {
+    background-color: #1a1a1a;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.login-title {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    margin-bottom: 0px;
+    letter-spacing: 2px;
+}
+
+.login-logo-img {
+    height: 100px;
+    width: 100px;
+    margin-top: 50px;
+    object-fit: scale-down;
+    object-position: center center;
+    border-radius: 100%;
+    margin-bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 5px;
+}
+
+.login-box-custom {
+    width: 360px;
+    margin-top: 20px;
+    background: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.login-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.main-branding {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* --- Navbar & Sidebar Utilities --- */
+.user-img-nav {
+    position: absolute;
+    height: 27px;
+    width: 27px;
+    object-fit: cover;
+    left: -7%;
+    top: -12%;
+}
+
+.btn-rounded {
+    border-radius: 50px;
+}
+
+.download-btn {
+    padding: 8px 14px;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    /* Ensure is behaves like a button */
+}
+
+.download-btn:hover {
+    background: var(--primary-hover);
+    color: #fff;
+}
+
+/* Layout Tweaks */
+.content-wrapper,
+.container-fluid {
+    margin-top: 20px;
 }
