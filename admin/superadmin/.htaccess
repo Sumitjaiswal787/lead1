@@ -1,0 +1,14 @@
+RewriteEngine On
+RewriteBase /admin/superadmin/
+
+# ✅ Remove trailing slash if not a folder (so /leads/ becomes /leads)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)/$ /admin/superadmin/$1 [R=301,L]
+
+# ✅ Rewrite /leads to leads.php (only if the file exists)
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^/]+)$ $1.php [L]
+
+# ✅ Optional: Redirect leads.php to /leads
+RewriteCond %{THE_REQUEST} \s/+admin/superadmin/([^.]+)\.php[\s?] [NC]
+RewriteRule ^([^.]+)\.php$ /admin/superadmin/$1 [R=301,L]

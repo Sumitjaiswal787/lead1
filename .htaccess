@@ -1,0 +1,32 @@
+# ===========================
+# Enable CORS (Cross-Origin Resource Sharing)
+# ===========================
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+</IfModule>
+
+# ===========================
+# Handle CORS preflight requests (OPTIONS)
+# ===========================
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Respond with 204 No Content for OPTIONS requests
+RewriteCond %{REQUEST_METHOD} =OPTIONS
+RewriteRule ^ - [R=204,L]
+
+# ===========================
+# Pretty URL Routing
+# Route all non-existent files/dirs to index.php?page=<request>
+# ===========================
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)$ index.php?page=$1 [L,QSA]
+
+</IfModule>
+<FilesMatch "\.(js|css|png|jpg|gif|woff2?)$">
+  Require all granted
+</FilesMatch>
+

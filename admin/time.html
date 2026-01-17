@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Time Zone Clock</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+  }
+  .clock-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  #time {
+    font-size: 3em;
+    font-weight: bold;
+    color: #333;
+  }
+  #timezone {
+    font-size: 1.2em;
+    color: #666;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="clock-container">
+  <h2>Your Local Time</h2>
+  <div id="time"></div>
+  <div id="timezone"></div>
+</div>
+
+<script>
+function updateClock() {
+  const now = new Date();
+
+  // Format the time
+  const timeOptions = {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: true // Use 12-hour format with AM/PM
+  };
+  const formattedTime = now.toLocaleTimeString(undefined, timeOptions);
+  document.getElementById('time').textContent = formattedTime;
+
+  // Get and display the time zone information
+  // This will display the full time zone name (e.g., "India Standard Time")
+  const timezoneOptions = {
+    timeZoneName: 'long'
+  };
+  const timezoneString = now.toLocaleDateString(undefined, timezoneOptions)
+                          .split(',')[1] // Get the part after the date, which often contains the timezone
+                          .trim();
+
+  // For a more precise offset, you can calculate it
+  const offsetMinutes = now.getTimezoneOffset(); // Returns offset in minutes from UTC
+  const offsetHours = -offsetMinutes / 60; // Convert to hours and invert sign for common interpretation
+  const offsetSign = offsetHours >= 0 ? '+' : '-';
+  const formattedOffset = `UTC${offsetSign}${Math.abs(offsetHours)}`;
+
+  document.getElementById('timezone').textContent = `Time Zone: ${timezoneString} (${formattedOffset})`;
+}
+
+// Update the clock every second
+setInterval(updateClock, 1000);
+
+// Initial call to display the clock immediately
+updateClock();
+</script>
+
+</body>
+</html>
