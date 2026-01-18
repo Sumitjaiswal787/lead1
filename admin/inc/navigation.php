@@ -28,93 +28,77 @@
             <ul
               class="nav nav-pills nav-sidebar flex-column text-sm nav-compact nav-flat nav-child-indent nav-collapse-hide-child"
               data-widget="treeview" role="menu" data-accordion="false">
-              <li class="nav-item dropdown">
+              <li class="nav-item">
                 <a href="./" class="nav-link nav-home">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
-                  <p>
-                    Dashboard
-                  </p>
+                  <p>Dashboard</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo base_url ?>admin/?page=leads" class="nav-link nav-leads">
+                <a href="<?php echo base_url ?>admin/?page=leads" class="nav-link nav-leads active">
                   <i class="nav-icon fas fa-stream"></i>
-                  <p>
-                    Leads
-                  </p>
+                  <p>Leads</p>
                 </a>
               </li>
 
-              <?php if ($_settings->userdata('type') == 1): ?>
-                <li class="nav-header">Maintenance</li>
-                <li class="nav-item dropdown">
-                  <a href="<?php echo base_url ?>admin/?page=sources" class="nav-link nav-sources">
-                    <i class="nav-icon fas fa-list"></i>
-                    <p>
-                      Source List
-                    </p>
-                  </a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a href="<?php echo base_url ?>admin/?page=user/list" class="nav-link nav-user_list">
-                    <i class="nav-icon fas fa-users-cog"></i>
-                    <p>
-                      User List
-                    </p>
-                  </a>
-                </li>
-
-
-
-
-              <?php endif; ?>
-
-              <?php if ($_settings->userdata('type') == 4): ?>
-
-                <li class="nav-item dropdown">
-                  <a href="<?php echo base_url ?>admin/?page=system_info" class="nav-link nav-system_info">
-                    <i class="nav-icon fas fa-cogs"></i>
-                    <p>
-                      Settings
-                    </p>
-                  </a>
-                </li>
+              <li class="nav-header">Maintenance</li>
+              <li class="nav-item">
+                <a href="<?php echo base_url ?>admin/?page=sources" class="nav-link nav-sources">
+                  <i class="nav-icon fas fa-list"></i>
+                  <p>Source List</p>
                 </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo base_url ?>admin/?page=user/list" class="nav-link nav-user_list">
+                  <i class="nav-icon fas fa-users"></i>
+                  <p>User List</p>
+                </a>
+              </li>
 
-              <?php endif; ?>
+              <li class="nav-item">
+                <a href="./view_lead/closed_leads.php" class="nav-link">
+                  <i class="nav-icon fas fa-archive"></i>
+                  <p>All Leads</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./view_lead/call_scheduler.php" class="nav-link">
+                  <i class="nav-icon fas fa-archive"></i>
+                  <p>Call Reminders</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./view_lead/sum.php" class="nav-link">
+                  <i class="nav-icon fas fa-chart-bar"></i>
+                  <p>Staff Report</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./add_sheets.php" class="nav-link">
+                  <i class="nav-icon fas fa-file-alt"></i>
+                  <p>Add Sheets</p>
+                </a>
+              </li>
 
+              <li class="nav-item mt-3 text-center">
+                <button id="downloadBtn" class="btn btn-default btn-block btn-sm"
+                  style="color: #000; background: #e5e7eb; border: none; padding: 10px;">
+                  Download <br> Lead_Import_Template
+                </button>
+              </li>
+
+              <script>
+                document.getElementById('downloadBtn').addEventListener('click', function (e) {
+                  e.preventDefault();
+                  const a = document.createElement('a');
+                  a.href = 'https://lead1.aurifie.com/uploads/Lead_Import_Template.xlsx';
+                  a.download = 'Lead_Import_Template.xlsx';
+                  document.body.appendChild(a);
+                  a.click();
+                  a.remove();
+                });
+              </script>
             </ul>
-
-          </nav>
-          <a href="./view_lead/closed_leads.php" class="nav-link"><i class="fa fa-archive"></i> All Leads</a>
-          <a href="./view_lead/call_scheduler.php" class="nav-link"><i class="fa fa-archive"></i> Call Reminders</a>
-          <?php if ($_settings->userdata('type') == 1): ?>
-
-            <a href="./view_lead/sum.php" class="nav-link">
-              <p>📊 Staff Report</p>
-            </a>
-
-          <?php endif; ?>
-          <?php if ($_settings->userdata('type') == 1): ?>
-            <a href="./add_sheets.php" class="nav-link">
-              <p>📄 Add Sheets</p>
-            </a>
-
-          <?php endif; ?>
-          <button id="downloadBtn" class="download-btn">
-            Download Lead_Import_Template
-          </button>
-          <script>
-            document.getElementById('downloadBtn').addEventListener('click', function () {
-              const a = document.createElement('a');
-              a.href = 'https://lead1.aurifie.com/uploads/Lead_Import_Template.xlsx'; // e.g., https://yourdomain.com/uploads/Lead_Import_Template.xlsx
-              a.download = 'Lead_Import_Template.xlsx';
-              document.body.appendChild(a);
-              a.click();
-              a.remove();
-            });
-          </script>
-          </ul>
         </div>
 
 
