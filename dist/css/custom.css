@@ -1,50 +1,52 @@
 :root {
-    /* Color Palette from Image */
-    --primary-color: #2563eb;
-    /* Bright Blue for primary actions/buttons */
-    --primary-hover: #1d4ed8;
-    --secondary-color: #64748b;
-    /* Slate for secondary text/icons */
+    /* --- Color Palette --- */
 
-    --sidebar-bg: #111827;
-    /* Dark Navy for Sidebar */
-    --sidebar-hover: #1f2937;
-    --sidebar-active: #2563eb;
-    /* Blue for active menu */
+    /* Primary Brand (Trust & Stability) */
+    --primary-color: #1E3A8A;
+    /* Deep Blue header/buttons */
+    --primary-soft: #3B82F6;
+    /* Accent/Active */
 
-    --body-bg: #f3f4f6;
-    /* Light Gray Background */
-    --card-bg: #ffffff;
-    /* White for cards */
+    /* Success / Sales */
+    --success-color: #16A34A;
+    --success-soft: #DCFCE7;
 
-    --text-primary: #111827;
-    /* Dark for headings */
-    --text-secondary: #6b7280;
-    /* Gray for body text */
+    /* Warning / Due Payments */
+    --warning-color: #F59E0B;
+    --warning-soft: #FEF3C7;
 
-    --border-color: #e5e7eb;
+    /* Danger / Lost */
+    --danger-color: #DC2626;
+    --danger-soft: #FEE2E2;
+
+    /* Neutral */
+    --bg-body: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --border-color: #E5E7EB;
+    --text-primary: #0F172A;
+    --text-muted: #64748B;
+
+    /* Sidebar specific */
+    --sidebar-bg: #020617;
+    --sidebar-active: #3B82F6;
+    --sidebar-hover: rgba(59, 130, 246, 0.15);
+
+    /* Shadows */
+    --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.06);
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 
-    /* Font */
-    --font-family: 'Inter', sans-serif;
-
-    /* Status Colors */
-    --status-interested: #2563eb;
-    /* Blue */
-    --status-followup: #f59e0b;
-    /* Amber */
-    --status-lost: #ef4444;
-    /* Red */
-    --status-new: #10b981;
-    /* Emerald */
-    --status-bg-opacity: 0.1;
+    /* Typography */
+    --font-heading: 'Poppins', 'Inter', sans-serif;
+    --font-body: 'Inter', 'Roboto', sans-serif;
 }
 
+/* --- Global Resets & Typography --- */
 body {
-    background-color: var(--body-bg) !important;
-    font-family: var(--font-family) !important;
-    color: var(--text-secondary);
+    background-color: var(--bg-body) !important;
+    font-family: var(--font-body) !important;
+    color: var(--text-muted);
+    font-size: 14px;
+    /* Base size */
 }
 
 h1,
@@ -54,68 +56,91 @@ h4,
 h5,
 h6 {
     color: var(--text-primary);
+    font-family: var(--font-heading);
     font-weight: 600;
 }
 
-/* --- Layout & Sidebar --- */
+h1 {
+    font-size: 28px;
+}
+
+h2 {
+    font-size: 22px;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+/* --- Sidebar --- */
 .main-sidebar {
     background-color: var(--sidebar-bg) !important;
+    box-shadow: none !important;
+    border-right: none !important;
 }
 
 .brand-link {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
     background-color: var(--sidebar-bg) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
 
 .brand-link .brand-text {
-    color: #fff !important;
-    font-weight: 600;
+    color: #E5E7EB !important;
+    font-family: var(--font-heading);
+    font-weight: 700;
 }
 
 .nav-sidebar .nav-item .nav-link {
-    color: #9ca3af !important;
-    /* Light gray text */
-    border-radius: 6px;
+    color: #94A3B8 !important;
+    /* Muted text for dark mode context */
+    border-radius: 4px;
+    /* More rectangular as per modern trends or keep rounded */
     padding: 10px 16px;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
+    transition: all 0.2s ease;
 }
 
 .nav-sidebar .nav-item .nav-link:hover {
     background-color: var(--sidebar-hover) !important;
-    color: #ffffff !important;
+    color: #fff !important;
 }
 
 .nav-sidebar .nav-item .nav-link.active {
-    background-color: var(--sidebar-active) !important;
-    color: #ffffff !important;
+    background-color: transparent !important;
+    /* Design spec says active indicator left border, but simple active bg is also good. Let's try border style + text color */
+    color: var(--sidebar-active) !important;
+    border-left: 3px solid var(--sidebar-active);
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.1) 0%, transparent 100%);
     box-shadow: none !important;
 }
 
-.nav-sidebar .nav-item .nav-link i {
-    color: inherit !important;
-    margin-right: 10px;
+/* Revert icon color for active state */
+.nav-sidebar .nav-item .nav-link.active i {
+    color: var(--sidebar-active) !important;
 }
 
-/* Content Wrapper */
-.content-wrapper {
-    background-color: var(--body-bg) !important;
-}
-
-.content-header {
-    padding: 20px 0.5rem;
-}
-
-.content-header h1 {
-    font-size: 1.5rem;
-    color: var(--text-primary);
-}
-
-/* --- Cards --- */
-.card {
-    background-color: var(--card-bg);
-    border: none !important;
-    border-radius: 12px !important;
+/* --- Top Navbar --- */
+.main-header {
+    background-color: var(--bg-card) !important;
+    border-bottom: 1px solid var(--border-color) !important;
     box-shadow: var(--shadow-sm) !important;
+}
+
+.main-header .nav-link {
+    color: var(--text-muted) !important;
+}
+
+/* --- Cards & Content --- */
+.content-wrapper {
+    background-color: var(--bg-body) !important;
+}
+
+.card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    /* Light border usually helps delineation */
+    border-radius: 12px !important;
+    box-shadow: var(--shadow-soft) !important;
     margin-bottom: 1.5rem;
 }
 
@@ -126,65 +151,36 @@ h6 {
 }
 
 .card-title {
+    font-family: var(--font-heading);
     font-weight: 600;
     color: var(--text-primary);
-    font-size: 1.1rem;
 }
 
-.card-body {
-    padding: 1.5rem;
-}
-
-/* --- Info Boxes (Dashboard) --- */
+/* --- Dashboard Info Boxes --- */
 .info-box {
     border-radius: 12px;
-    box-shadow: var(--shadow-sm) !important;
+    box-shadow: var(--shadow-soft) !important;
     border: none !important;
-    background: #fff !important;
+    background: var(--bg-card) !important;
     padding: 20px !important;
     display: flex;
     flex-direction: column;
-    /* Stack content */
     align-items: flex-start;
-    height: 100%;
+    justify-content: center;
+    min-height: 140px;
 }
 
 .info-box-icon {
     width: 48px;
     height: 48px;
-    border-radius: 10px !important;
+    border-radius: 12px !important;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 15px;
     font-size: 1.2rem;
     box-shadow: none !important;
-}
-
-/* Custom Colors for Info Box Icons based on your previous usage, but softened */
-.bg-gradient-primary {
-    background: #dbeafe !important;
-    color: #2563eb !important;
-}
-
-.bg-gradient-success {
-    background: #d1fae5 !important;
-    color: #10b981 !important;
-}
-
-.bg-gradient-warning {
-    background: #fef3c7 !important;
-    color: #d97706 !important;
-}
-
-.bg-gradient-danger {
-    background: #fee2e2 !important;
-    color: #ef4444 !important;
-}
-
-.bg-gradient-info {
-    background: #cffafe !important;
-    color: #06b6d4 !important;
+    /* Remove default bg colors, we will use custom utilities */
 }
 
 .info-box-content {
@@ -193,38 +189,89 @@ h6 {
 }
 
 .info-box-text {
-    color: var(--text-secondary) !important;
+    color: var(--text-muted) !important;
     font-size: 0.9rem;
-    text-transform: none !important;
+    font-weight: 500;
 }
 
 .info-box-number {
     color: var(--text-primary) !important;
     font-size: 1.75rem !important;
     font-weight: 700 !important;
+    font-family: var(--font-heading);
     margin-top: 5px;
 }
 
+/* Info Box Colors */
+/* Primary Data */
+.bg-gradient-primary {
+    background: #DBEAFE !important;
+    color: #1E3A8A !important;
+}
+
+/* Success */
+.bg-gradient-success {
+    background: var(--success-soft) !important;
+    color: var(--success-color) !important;
+}
+
+/* Warning */
+.bg-gradient-warning {
+    background: var(--warning-soft) !important;
+    color: var(--warning-color) !important;
+}
+
+/* Danger */
+.bg-gradient-danger {
+    background: var(--danger-soft) !important;
+    color: var(--danger-color) !important;
+}
+
+/* Info/Blue Accent */
+.bg-gradient-info {
+    background: #E0F2FE !important;
+    color: #0284C7 !important;
+}
+
+
 /* --- Buttons --- */
-.btn-primary {
-    background-color: var(--primary-color) !important;
-    border-color: var(--primary-color) !important;
-    font-weight: 500;
-    box-shadow: var(--shadow-sm);
-    padding: 8px 16px;
+.btn {
     border-radius: 6px;
+    font-weight: 500;
+    padding: 8px 16px;
+    transition: all 0.2s;
+    font-family: var(--font-heading);
+}
+
+.btn-primary {
+    background-color: var(--primary-soft) !important;
+    border-color: var(--primary-soft) !important;
+    color: white !important;
+    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
 }
 
 .btn-primary:hover {
-    background-color: var(--primary-hover) !important;
-    border-color: var(--primary-hover) !important;
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    transform: translateY(-1px);
+}
+
+.btn-success {
+    background-color: var(--success-color) !important;
+    border-color: var(--success-color) !important;
+}
+
+.btn-light,
+.btn-default {
+    background-color: #E5E7EB !important;
+    color: var(--text-primary) !important;
+    border-color: #D1D5DB !important;
 }
 
 /* --- Tables --- */
 .table thead th {
-    background-color: #f9fafb;
-    /* Very light gray header */
-    color: var(--text-secondary);
+    background-color: #F1F5F9;
+    color: var(--text-muted);
     font-weight: 600;
     text-transform: uppercase;
     font-size: 0.75rem;
@@ -236,175 +283,154 @@ h6 {
 
 .table tbody td {
     border-top: 1px solid var(--border-color);
-    padding: 16px;
+    padding: 14px 16px;
     vertical-align: middle;
     color: var(--text-primary);
     font-size: 0.9rem;
 }
 
 .table-hover tbody tr:hover {
-    background-color: #f9fafb;
+    background-color: #F8FAFC;
 }
 
-/* --- Form Elements --- */
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(248, 250, 252, 0.5);
+}
+
+
+/* Status Pills */
+.badge {
+    padding: 6px 10px;
+    border-radius: 20px;
+    /* Fully rounded pill */
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+}
+
+.badge-primary,
+.badge-active {
+    background-color: #DBEAFE;
+    color: #1E40AF;
+}
+
+.badge-success,
+.badge-paid {
+    background-color: var(--success-soft);
+    color: var(--success-color);
+}
+
+.badge-warning,
+.badge-due {
+    background-color: var(--warning-soft);
+    color: var(--warning-color);
+}
+
+.badge-danger,
+.badge-cancelled,
+.badge-lost {
+    background-color: var(--danger-soft);
+    color: var(--danger-color);
+}
+
+
+/* --- Forms --- */
 .form-control {
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    padding: 10px 12px;
-    box-shadow: var(--shadow-sm);
+    border: 1px solid #CBD5E1;
+    border-radius: 8px;
+    padding: 10px 14px;
+    color: var(--text-primary);
+    background-color: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .form-control:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    border-color: var(--primary-soft);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
 
-/* --- Utility Classes for Badges --- */
-.badge {
-    padding: 6px 10px;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 0.75rem;
-}
-
-.badge-interested {
-    background: #dbeafe;
-    color: #1e40af;
-}
-
-.badge-followup {
-    background: #fef3c7;
-    color: #92400e;
-}
-
-.badge-lost {
-    background: #fee2e2;
-    color: #991b1b;
-}
-
-.badge-new {
-    background: #d1fae5;
-    color: #065f46;
-}
-
-/* Navbar Overrides */
-.main-header {
-    border-bottom: 1px solid var(--border-color) !important;
-    background-color: #fff !important;
-    box-shadow: var(--shadow-sm);
-}
-
-.main-header .nav-link {
-    color: var(--text-secondary) !important;
-}
-
-/* Mobile Responsive Tweaks */
-@media (max-width: 768px) {
-    .content-header h1 {
-        font-size: 1.25rem;
-    }
-}
-
-/* --- Utilities & Helper Classes --- */
 .glass-box {
     background: rgba(255, 255, 255, 0.7);
-    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
-    backdrop-filter: blur(6px);
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    margin-bottom: 1rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+    border-radius: 12px;
 }
 
-/* --- Login Page Styles --- */
-.login-body {
-    background-color: #1a1a1a;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
+/* Glassmorphism Classes */
+.glass-modal .modal-content {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
-.login-title {
-    font-size: 2.5em;
-    font-weight: bold;
-    color: white;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-    margin-bottom: 0px;
-    letter-spacing: 2px;
-}
-
-.login-logo-img {
-    height: 100px;
-    width: 100px;
-    margin-top: 50px;
-    object-fit: scale-down;
-    object-position: center center;
-    border-radius: 100%;
-    margin-bottom: 10px;
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 5px;
-}
-
-.login-box-custom {
-    width: 360px;
-    margin-top: 20px;
-    background: #fff;
-    border-radius: 5px;
-    padding: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-}
-
-.login-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
-}
-
-.main-branding {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-/* --- Navbar & Sidebar Utilities --- */
-.user-img-nav {
-    position: absolute;
-    height: 27px;
-    width: 27px;
-    object-fit: cover;
-    left: -7%;
-    top: -12%;
-}
-
-.btn-rounded {
-    border-radius: 50px;
-}
-
-.download-btn {
-    padding: 8px 14px;
-    background: var(--primary-color);
+/* --- Login Page --- */
+.login-page {
+    background-color: var(--sidebar-bg);
+    /* Dark bg for login */
     color: #fff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    /* Ensure is behaves like a button */
+    font-family: var(--font-body);
 }
 
-.download-btn:hover {
-    background: var(--primary-hover);
-    color: #fff;
+.login-box {
+    width: 400px;
 }
 
-/* Layout Tweaks */
-.content-wrapper,
-.container-fluid {
-    margin-top: 20px;
+.login-box .card {
+    background: rgba(15, 23, 42, 0.6);
+    /* Semi-transparent dark card */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.login-box .card-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.login-box .card-body {
+    background: transparent !important;
+}
+
+.login-box h1,
+.login-box a {
+    color: #fff !important;
+}
+
+.login-box .btn-primary {
+    width: 100%;
+    margin-top: 10px;
+    font-size: 16px;
+    padding: 12px;
+}
+
+/* --- Helper Classes --- */
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.text-success {
+    color: var(--success-color) !important;
+}
+
+.text-warning {
+    color: var(--warning-color) !important;
+}
+
+.text-danger {
+    color: var(--danger-color) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    .content-header {
+        padding: 15px 0;
+    }
 }

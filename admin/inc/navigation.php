@@ -1,6 +1,6 @@
 </style>
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4 sidebar-no-expand bg-gradient-navy">
+<aside class="main-sidebar sidebar-dark-primary elevation-4 sidebar-no-expand">
   <!-- Brand Logo -->
   <a href="<?php echo base_url ?>admin" class="brand-link bg-transparent text-sm border-0 shadow-sm">
     <img src="<?php echo validate_image($_settings->info('logo')) ?>" alt="Store Logo"
